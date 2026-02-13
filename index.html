@@ -10,14 +10,42 @@
         h1, h2 { font-family: 'Dancing Script', cursive; color: #ff4d6d; font-size: 2.5em; z-index: 10; margin: 10px; }
         .container { display: none; flex-direction: column; align-items: center; width: 100%; z-index: 10; }
         #login-page { display: flex; }
-        .heart-input-container { position: relative; width: 220px; height: 200px; display: flex; justify-content: center; align-items: center; background: #ff4d6d; clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'); transform: scale(1.2); margin-bottom: 30px; }
-        input { width: 110px; padding: 10px; font-size: 1.1em; border: none; border-radius: 5px; text-align: center; background: white; color: #ff4d6d; font-weight: bold; outline: none; }
+        
+        .heart-input-container { 
+            position: relative; 
+            width: 250px; 
+            height: 220px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background: #ff4d6d; 
+            clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'); 
+            transform: scale(1.1); 
+            margin-bottom: 20px;
+        }
+
+        input { 
+            width: 130px; 
+            padding: 10px; 
+            font-size: 1.2em; 
+            border: none; 
+            border-radius: 8px; 
+            text-align: center; 
+            background: white; 
+            color: #ff4d6d; 
+            font-weight: bold; 
+            outline: none;
+            z-index: 20;
+        }
+
         .media-container { height: 250px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 100%; }
         img { max-height: 100%; max-width: 90%; border-radius: 15px; display: block; }
+        
         .btn-container { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 100px; position: relative; width: 100%; }
-        button { border: none; border-radius: 50px; cursor: pointer; font-weight: bold; padding: 15px 30px; font-size: 1.1em; transition: 0.3s; z-index: 20; }
-        .btn-main { background: #ff4d6d; color: white; }
+        button { border: none; border-radius: 50px; cursor: pointer; font-weight: bold; padding: 15px 35px; font-size: 1.1em; transition: 0.3s; z-index: 30; }
+        .btn-main { background: #ff4d6d; color: white; margin-top: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         #no { background: #8e9aaf; color: white; }
+
         .heart-particle { position: absolute; color: #ff4d6d; font-size: 20px; top: -20px; pointer-events: none; animation: fall linear forwards; z-index: 1; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
@@ -27,7 +55,7 @@
     <div id="login-page" class="container">
         <h1>La nostra data ❤️</h1>
         <div class="heart-input-container">
-            <input type="text" id="passwordInput">
+            <input type="text" id="passwordInput" autocomplete="off">
         </div>
         <button class="btn-main" onclick="checkPassword()">Entra</button>
     </div>
@@ -51,7 +79,15 @@
     </div>
 
     <script>
-        const PASSWORD_CORRETTA = "12022024"; // Sostituisci con la vostra data vera
+        // --- INSERISCI QUI LA DATA (Solo numeri) ---
+        const PASSWORD_CORRETTA = "12022024"; 
+
+        // Fa funzionare il tasto INVIO sulla tastiera
+        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
 
         function createHeart() {
             const heart = document.createElement('div');
