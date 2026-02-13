@@ -7,66 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { text-align: center; font-family: 'Poppins', sans-serif; background: #fff0f3; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0; overflow: hidden; position: relative; }
-        
         h1, h2 { font-family: 'Dancing Script', cursive; color: #ff4d6d; font-size: 3em; margin: 20px; z-index: 100; position: relative; }
-        
         .container { display: none; flex-direction: column; align-items: center; width: 100%; z-index: 100; }
         #login-page { display: flex; }
-        
-        .login-box { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 30px; 
-            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.3); 
-            border: 4px solid #ff4d6d; 
-            position: relative;
-            z-index: 200;
-        }
-
-        input { 
-            width: 200px; 
-            padding: 15px; 
-            font-size: 1.4em; 
-            border: 2px solid #ffdde1; 
-            border-radius: 15px; 
-            text-align: center; 
-            margin-bottom: 20px; 
-            color: #ff4d6d; 
-            font-weight: bold; 
-            position: relative;
-            z-index: 210;
-        }
-
-        .btn-main { 
-            background: #ff4d6d; 
-            color: white; 
-            border: none; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            padding: 15px 40px; 
-            font-size: 1.2em; 
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-            position: relative;
-            z-index: 999; /* Massima priorità per il clic */
-        }
-
+        .login-box { background: white; padding: 40px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 77, 109, 0.3); border: 4px solid #ff4d6d; position: relative; z-index: 200; }
+        input { width: 200px; padding: 15px; font-size: 1.4em; border: 2px solid #ffdde1; border-radius: 15px; text-align: center; margin-bottom: 20px; color: #ff4d6d; font-weight: bold; position: relative; z-index: 210; outline: none; }
+        .btn-main { background: #ff4d6d; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; padding: 15px 40px; font-size: 1.2em; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); position: relative; z-index: 999; }
         .media-container { height: 230px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 100%; }
-        img { max-height: 100%; max-width: 90%; border-radius: 15px; }
-        
+        img { max-height: 100%; max-width: 90%; border-radius: 15px; object-fit: contain; }
         .btn-container { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 100px; width: 100%; position: relative; z-index: 500; }
-        #no { background: #8e9aaf; color: white; border: none; border-radius: 50px; padding: 15px 40px; font-weight: bold; cursor: pointer; }
-
-        /* Cuoricini animati */
-        .heart-particle { 
-            position: absolute; 
-            color: #ff4d6d; 
-            font-size: 25px; 
-            top: -50px; 
-            pointer-events: none; /* Impedisce ai cuori di bloccare i clic */
-            animation: fall linear forwards; 
-            z-index: 10; 
-        }
+        #no { background: #8e9aaf; color: white; border: none; border-radius: 50px; padding: 15px 40px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .heart-particle { position: absolute; color: #ff4d6d; font-size: 25px; top: -50px; pointer-events: none; animation: fall linear forwards; z-index: 10; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
@@ -83,9 +34,9 @@
 
     <div id="question-page" class="container">
         <div class="media-container">
-            <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Lightning_McQueen.png" alt="Cars">
+            <img src="https://purepng.com/public/uploads/large/purepng.com-cars-lightning-mcqueencars-lightning-mcqueenlightning-mcqueencars-moviepixar-cars-221519316524p8m2v.png" alt="Cars">
         </div>
-        <h1>Vuoi essere il mio Valentino? ❤️</h1>
+        <h1>Will you be my valentine? ❤️</h1>
         <div class="btn-container">
             <button class="btn-main" id="yes" onclick="showFinalPage()">Sì</button>
             <button id="no" onclick="shrinkNo()">No</button>
@@ -94,16 +45,14 @@
 
     <div id="final-page" class="container">
         <div class="media-container" style="height: 300px;">
-            <img src="https://www.pngmart.com/files/16/Winnie-The-Pooh-Transparent-Background.png" alt="Winnie">
+            <img src="https://pngimg.com/uploads/winnie_pooh/winnie_pooh_PNG37659.png" alt="Winnie">
         </div>
         <h2>Sapevo che avresti detto di sì! 😍</h2>
     </div>
 
     <script>
-        // Password aggiornata
         const PASSWORD_CORRETTA = "01092024"; 
 
-        // Generatore di cuoricini
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-particle');
@@ -113,13 +62,10 @@
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 5000);
         }
-        
-        // Avvio pioggia di cuori
         setInterval(createHeart, 300);
 
         function checkPassword() {
             const val = document.getElementById('passwordInput').value;
-            // Supporta sia il formato con lo zero iniziale che senza se il browser lo taglia
             if (val === PASSWORD_CORRETTA || val === "1092024") {
                 document.getElementById('login-page').style.display = 'none';
                 document.getElementById('question-page').style.display = 'flex';
@@ -132,10 +78,9 @@
         let scale = 1;
         function shrinkNo() {
             noClicks++;
-            if (noClicks < 4) {
-                scale -= 0.25;
+            if (noClicks < 5) {
+                scale -= 0.2;
                 document.getElementById('no').style.transform = `scale(${scale})`;
-                document.getElementById('no').style.opacity = scale;
                 document.getElementById('yes').style.transform = `scale(${1 + noClicks * 0.2})`;
             } else {
                 document.getElementById('no').style.display = 'none';
