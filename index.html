@@ -18,9 +18,9 @@
         
         .btn-main { background: #ff4d6d; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; padding: 15px 45px; font-size: 1.3em; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); position: relative; z-index: 999; }
         
-        /* Stile per le Emoji Giganti */
-        .emoji-display { font-size: 120px; margin-bottom: 20px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        /* Contenitore GIF */
+        .gif-container { width: 250px; height: 200px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 20px; }
+        .gif-container img { width: 100%; height: auto; border-radius: 15px; }
 
         .btn-container { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 120px; width: 100%; position: relative; z-index: 500; }
         #no { background: #8e9aaf; color: white; border: none; border-radius: 50px; padding: 15px 40px; font-weight: bold; cursor: pointer; transition: 0.2s; }
@@ -32,8 +32,7 @@
 <body>
 
     <div id="login-page" class="container">
-        <h1>Inserisci password
-            (è facile è una data importante)❤️</h1>
+        <h1>Inserisci password ❤️</h1>
         <p>(è facile è una data importante)</p>
         <div class="login-box">
             <input type="number" id="passwordInput">
@@ -43,7 +42,9 @@
     </div>
 
     <div id="question-page" class="container">
-        <div class="emoji-display">🏎️</div>
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXN6NHF6YmN6M2Z6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wa72AmGZp3AaY/giphy.gif" alt="Saetta">
+        </div>
         <h1>Will u be my valentine? ❤️</h1>
         <div class="btn-container">
             <button class="btn-main" id="yes" onclick="showFinalPage()">Sì</button>
@@ -52,7 +53,9 @@
     </div>
 
     <div id="final-page" class="container">
-        <div class="emoji-display">🧸❤️</div>
+        <div class="gif-container" style="height: 250px;">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3R6N3R6N3R6N3R6N3R6N3R6N3R6N3R6N3R6N3R6N3R6N3R6JmVwP12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ch4OTkSncCVsA/giphy.gif" alt="Winnie">
+        </div>
         <h2>Sapevo che avresti detto di sì! 😍</h2>
     </div>
 
