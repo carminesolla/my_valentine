@@ -20,7 +20,7 @@
             box-shadow: 0 15px 35px rgba(255, 77, 109, 0.3); 
             border: 4px solid #ff4d6d; 
             position: relative;
-            z-index: 200; /* Molto alto */
+            z-index: 200;
         }
 
         input { 
@@ -48,7 +48,7 @@
             font-size: 1.2em; 
             box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
             position: relative;
-            z-index: 999; /* Il più alto di tutti per essere cliccabile */
+            z-index: 999; /* Massima priorità per il clic */
         }
 
         .media-container { height: 230px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 100%; }
@@ -57,13 +57,13 @@
         .btn-container { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 100px; width: 100%; position: relative; z-index: 500; }
         #no { background: #8e9aaf; color: white; border: none; border-radius: 50px; padding: 15px 40px; font-weight: bold; cursor: pointer; }
 
-        /* Cuoricini */
+        /* Cuoricini animati */
         .heart-particle { 
             position: absolute; 
             color: #ff4d6d; 
             font-size: 25px; 
             top: -50px; 
-            pointer-events: none; /* Fondamentale: i cuori non bloccano i click */
+            pointer-events: none; /* Impedisce ai cuori di bloccare i clic */
             animation: fall linear forwards; 
             z-index: 10; 
         }
@@ -100,8 +100,10 @@
     </div>
 
     <script>
-        const PASSWORD_CORRETTA = "12022024"; // Ricorda di mettere la tua data
+        // Password aggiornata
+        const PASSWORD_CORRETTA = "01092024"; 
 
+        // Generatore di cuoricini
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-particle');
@@ -112,12 +114,13 @@
             setTimeout(() => { heart.remove(); }, 5000);
         }
         
-        // Avvia i cuoricini immediatamente
+        // Avvio pioggia di cuori
         setInterval(createHeart, 300);
 
         function checkPassword() {
             const val = document.getElementById('passwordInput').value;
-            if (val === PASSWORD_CORRETTA) {
+            // Supporta sia il formato con lo zero iniziale che senza se il browser lo taglia
+            if (val === PASSWORD_CORRETTA || val === "1092024") {
                 document.getElementById('login-page').style.display = 'none';
                 document.getElementById('question-page').style.display = 'flex';
             } else {
